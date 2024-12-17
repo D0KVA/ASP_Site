@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Список товаров</h2>
+<a asp-action="CreateProduct" class="btn btn-success mb-3">Добавить продукт</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Цена</th>
+            <th>Тип</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.NameProduct</td>
+                <td>@product.PriceProduct</td>
+                <td>@product.ProductType.NameType</td>
+                <td>
+                    <a asp-action="EditProduct" asp-route-id="@product.IdProduct" class="btn btn-sm btn-warning">Редактировать</a>
+                    <form asp-action="DeleteProduct" asp-route-id="@product.IdProduct" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

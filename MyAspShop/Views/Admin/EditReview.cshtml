@@ -1,0 +1,32 @@
+﻿@model MyAspShop.Models.Review
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Редактировать отзыв</h1>
+
+<form asp-action="EditReview">
+    <input type="hidden" asp-for="IdReview" />
+    <div class="form-group">
+        <label asp-for="Rating"></label>
+        <input asp-for="Rating" class="form-control" />
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CommentReview"></label>
+        <textarea asp-for="CommentReview" class="form-control"></textarea>
+        <span asp-validation-for="CommentReview" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="UsersId"></label>
+        <select asp-for="UsersId" class="form-control" asp-items="@(new SelectList(ViewBag.Users, "IdUser", "Name"))"></select>
+        <span asp-validation-for="UsersId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductId"></label>
+        <select asp-for="ProductId" class="form-control" asp-items="@(new SelectList(ViewBag.Products, "IdProduct", "NameProduct"))"></select>
+        <span asp-validation-for="ProductId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a asp-action="Reviews" class="btn btn-secondary">Отмена</a>
+</form>

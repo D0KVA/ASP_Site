@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MyAspShop.Models.ProductType>
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Типы продуктов</h1>
+
+<p>
+    <a asp-action="CreateProductType" class="btn btn-primary">Создать новый тип продукта</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Название</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdProductType</td>
+                <td>@item.NameType</td>
+                <td>
+                    <a asp-action="EditProductType" asp-route-id="@item.IdProductType" class="btn btn-warning">Редактировать</a>
+                    <form asp-action="DeleteProductType" asp-route-id="@item.IdProductType" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,19 @@
+﻿@model MyAspShop.Models.Role
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Редактировать роль</h1>
+
+<form asp-action="EditRole" method="post">
+    <div class="form-group">
+        <label asp-for="NameRole"></label>
+        <input asp-for="NameRole" class="form-control" />
+        <span asp-validation-for="NameRole" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a asp-action="Roles" class="btn btn-secondary">Отмена</a>
+</form>
+
+<!-- Отображение ошибок валидации -->
+<div asp-validation-summary="All" class="text-danger"></div>

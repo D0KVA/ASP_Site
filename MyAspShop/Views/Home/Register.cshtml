@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+}
+<style></style>
+<body>
+
+    <div class="container">
+
+        <h2>Зарегистрироваться</h2>
+        <form method="post">
+            <label for="fullname">Full Name</label>
+            <input type="text" name="fullname" required />
+
+            <label for="email">Email</label>
+            <input type="email" name="email" required />
+
+            <label for="password">Password</label>
+            <input type="password" name="password" required />
+
+            <button type="submit">Зарегистрироваться</button>
+
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="error-message">@ViewBag.ErrorMessage</div>
+            }
+        </form>
+
+        <div class="link">
+            <a asp-action="Index">Уже есть аккаунт? Авторизоваться.</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

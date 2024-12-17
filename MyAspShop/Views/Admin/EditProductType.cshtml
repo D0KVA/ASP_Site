@@ -1,0 +1,17 @@
+﻿@model MyAspShop.Models.ProductType
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Редактировать тип продукта</h1>
+
+<form asp-action="EditProductType">
+    <input type="hidden" asp-for="IdProductType" />
+    <div class="form-group">
+        <label asp-for="NameType"></label>
+        <input asp-for="NameType" class="form-control" />
+        <span asp-validation-for="NameType" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a asp-action="ProductTypes" class="btn btn-secondary">Отмена</a>
+</form>

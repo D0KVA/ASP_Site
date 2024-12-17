@@ -1,0 +1,35 @@
+﻿@model MyAspShop.Models.Review
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Создать отзыв</h1>
+
+<form asp-action="CreateReview" method="post">
+    <div class="form-group">
+        <label asp-for="Rating">Рейтинг</label>
+        <input asp-for="Rating" class="form-control" />
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CommentReview">Комментарий</label>
+        <textarea asp-for="CommentReview" class="form-control"></textarea>
+        <span asp-validation-for="CommentReview" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="UsersId">Имя пользователя</label>
+        <select asp-for="UsersId" class="form-control" asp-items="@(new SelectList(ViewBag.Users, "IdUser", "LoginUser"))">
+            <option value="">Выберите пользователя</option>
+        </select>
+        <span asp-validation-for="UsersId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductId">Название продукта</label>
+        <select asp-for="ProductId" class="form-control" asp-items="@(new SelectList(ViewBag.Products, "IdProduct", "NameProduct"))">
+            <option value="">Выберите продукт</option>
+        </select>
+        <span asp-validation-for="ProductId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Создать</button>
+    <a asp-action="Reviews" class="btn btn-secondary">Отмена</a>
+</form>

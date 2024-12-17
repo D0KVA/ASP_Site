@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MyAspShop.Models.Role>
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Список ролей</h1>
+
+<a asp-action="CreateRole" class="btn btn-primary">Создать роль</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Название роли</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+            <tr>
+                <td>@role.NameRole</td>
+                <td>
+                    <a asp-action="EditRole" asp-route-id="@role.IdRole" class="btn btn-warning">Редактировать</a>
+                    <form asp-action="DeleteRole" asp-route-id="@role.IdRole" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

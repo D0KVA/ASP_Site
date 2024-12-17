@@ -1,0 +1,23 @@
+﻿@model MyAspShop.Models.Product
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="EditProduct" method="post">
+    <input type="hidden" asp-for="IdProduct" />
+    <div class="form-group">
+        <label>Имя</label>
+        <input asp-for="NameProduct" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Цена</label>
+        <input asp-for="PriceProduct" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Тип</label>
+        <select asp-for="ProductTypeId" asp-items="@(new SelectList(ViewBag.ProductTypes, "IdProductType", "NameType"))" class="form-control"></select>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>

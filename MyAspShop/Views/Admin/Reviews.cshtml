@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MyAspShop.Models.Review>
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Отзывы</h1>
+
+<p>
+    <a asp-action="CreateReview" class="btn btn-primary">Создать новый отзыв</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Рейтинг</th>
+            <th>Комментарий</th>
+            <th>Пользователь</th>
+            <th>Продукт</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdReview</td>
+                <td>@item.Rating</td>
+                <td>@item.CommentReview</td>
+                <td>@item.Users?.LoginUser</td>
+                <td>@item.Product?.NameProduct</td>
+                <td>
+                    <a asp-action="EditReview" asp-route-id="@item.IdReview" class="btn btn-warning">Редактировать</a>
+                    <form asp-action="DeleteReview" asp-route-id="@item.IdReview" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
